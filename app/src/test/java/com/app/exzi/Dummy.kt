@@ -8,31 +8,28 @@ import com.google.gson.Gson
 object Dummy {
 
     val domainOrderBook: MarketOrdersDomainModel
-        get() = MarketOrdersDomainModel(
-            bid =
-            (0..100).map {
-                MarketOrderDomainModel(
-                    it.toLong(),
-                    it,
-                    it.toLong(),
-                    it,
-                    it.toString(),
-                    it.toString()
-                )
-            },
-            ask =
-            (0..100).map {
-                MarketOrderDomainModel(
-                    it.toLong(),
-                    it,
-                    it.toLong(),
-                    it,
-                    it.toString(),
-                    it.toString()
-                )
-            }
+        get() {
+            val avg = (0..100).sum() / 101
+            return MarketOrdersDomainModel(
+                bid =
+                (0..100).map {
+                    MarketOrderDomainModel(
+                        price = (it * 2000).toString(),
+                        fraction = (it / avg) * 0.5f,
+                        quantity = it.toString()
+                    )
+                },
+                ask =
+                (0..100).map {
+                    MarketOrderDomainModel(
+                        price = (it * 2000).toString(),
+                        fraction = (it / avg) * 0.5f,
+                        quantity = it.toString()
+                    )
+                }
 
-        )
+            )
+        }
     val orderBooksRAW: MarketOrdersDataModel
         get() {
             val json: String = """

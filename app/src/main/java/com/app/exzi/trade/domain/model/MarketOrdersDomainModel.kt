@@ -8,10 +8,6 @@ data class MarketOrdersDomainModel(
 )
 
 data class MarketOrderDomainModel(
-    val volume: Long,
-    val count: Int,
-    val rate: Long,
-    val price: Int,
-    val rate_f: String,
-    val volume_f: String
-)
+    val price: String,
+    val fraction: Float,
+    val quantity: String)

@@ -82,4 +82,8 @@ dependencies {
     implementation(libs.retrofit.logger)
     implementation(libs.gson)
 
+    implementation(libs.mockk)
+
+    implementation(libs.turbine)
+
 }

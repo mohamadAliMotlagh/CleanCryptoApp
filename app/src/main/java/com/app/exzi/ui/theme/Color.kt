@@ -1,5 +1,8 @@
 package com.app.exzi.ui.theme
 
+import android.provider.CalendarContract
+import androidx.compose.material3.ColorScheme
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
 val Purple80 = Color(0xFFD0BCFF)
@@ -9,3 +12,21 @@ val Pink80 = Color(0xFFEFB8C8)
 val Purple40 = Color(0xFF6650a4)
 val PurpleGrey40 = Color(0xFF625b71)
 val Pink40 = Color(0xFF7D5260)
+
+
+
+val ColorScheme.Green: Color
+    @Composable
+    get() = Color(0xFF4BA67B)
+
+val ColorScheme.GreenDarker: Color
+    @Composable
+    get() = Color(0xFF122326)
+
+val ColorScheme.RED: Color
+    @Composable
+    get() = Color(0xFFDC5D58)
+
+val ColorScheme.RedDarker: Color
+    @Composable
+    get() = Color(0xFF281921)

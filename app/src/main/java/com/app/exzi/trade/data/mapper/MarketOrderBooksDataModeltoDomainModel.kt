@@ -6,12 +6,13 @@ import com.app.exzi.trade.domain.model.MarketOrdersDomainModel
 
 fun marketOrderBooksDataModelToDomainModel(marketOrderBooksDataModel: MarketOrdersDataModel): MarketOrdersDomainModel {
 
-    val sellSum = marketOrderBooksDataModel.sell?.sumOf {
+    val sellSum = ((marketOrderBooksDataModel.sell?.sumOf {
         (it.volume ?: 0) * (it.count ?: 0)
-    } ?: 1
-    val buySum = marketOrderBooksDataModel.buy?.sumOf {
+    } ?: 1).toFloat() / (marketOrderBooksDataModel.sell?.size?.toFloat() ?: 1f))
+
+    val buySum = ((marketOrderBooksDataModel.buy?.sumOf {
         (it.volume ?: 0) * (it.count ?: 0)
-    } ?: 1
+    } ?: 1).toFloat() / (marketOrderBooksDataModel.buy?.size?.toFloat() ?: 1f))
 
     return MarketOrdersDomainModel(
         ask = marketOrderBooksDataModel.sell?.map {

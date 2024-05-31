@@ -6,10 +6,13 @@ import com.app.exzi.trade.data.remote.MarketOrdersRemoteDataSource
 import com.app.exzi.trade.domain.model.MarketOrderDomainModel
 import com.app.exzi.trade.domain.model.MarketOrdersDomainModel
 import com.app.exzi.trade.domain.model.MarketOrdersRepository
+import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.cancellable
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.isActive
+import kotlinx.coroutines.isActive
 
 class MarketOrdersRepositoryImpl(
     private val remoteDataSource: MarketOrdersRemoteDataSource,
@@ -21,9 +24,8 @@ class MarketOrdersRepositoryImpl(
             val result = remoteDataSource.getOrdersFromApi(pairID).map {
                 orderBooksMapper(it)
             }
-
             emit(result)
-            delay(5000)
+            delay(1000)
         }
-    }.cancellable()
+    }
 }

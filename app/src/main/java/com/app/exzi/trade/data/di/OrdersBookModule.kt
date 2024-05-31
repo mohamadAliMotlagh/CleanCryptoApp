@@ -4,15 +4,14 @@ import com.app.exzi.core.networking.NetworkManager
 import com.app.exzi.trade.data.MarketOrdersRepositoryImpl
 import com.app.exzi.trade.data.mapper.marketOrderBooksDataModelToDomainModel
 import com.app.exzi.trade.data.network.OrdersApi
-import com.app.exzi.trade.data.remote.MarketOrdersRemoteDataSource
-import com.app.exzi.trade.data.remote.MarketOrdersRemoteDataSourceImpl
-import com.app.exzi.trade.domain.model.MarketOrdersRepository
+import com.app.exzi.trade.data.remote.orderbook.MarketOrdersRemoteDataSource
+import com.app.exzi.trade.data.remote.orderbook.MarketOrdersRemoteDataSourceImpl
+import com.app.exzi.trade.domain.MarketOrdersRepository
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Singleton
 
 @Module
@@ -26,7 +25,7 @@ object OrdersBookModule {
 
     @Singleton
     @Provides
-    fun provideMovieRepository(
+    fun provideOrderBookRepository(
         remote: MarketOrdersRemoteDataSource,
         ): MarketOrdersRepository {
         return MarketOrdersRepositoryImpl(

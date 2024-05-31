@@ -2,6 +2,7 @@ package com.app.exzi.trade.presenter.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -21,26 +22,29 @@ import com.app.exzi.trade.presenter.ui.candle.CandleUI
 import com.app.exzi.trade.presenter.ui.orderbook.HorizontalOrderBooksUI
 
 @Composable
-fun VerticalTradingUI(
+fun HorizontalTradingUI(
     ask: List<MarketOrderDomainModel>,
     bid: List<MarketOrderDomainModel>,
     candles: ViewStates<CandleDomainModel>,
 ) {
 
-    Column(Modifier.fillMaxSize()) {
+    Row(Modifier.fillMaxSize()) {
+
+        HorizontalOrderBooksUI(modifier = Modifier.weight(0.5f), ask, bid)
+
         CandleUI(
             modifier = Modifier
+                .weight(0.5f)
                 .fillMaxWidth()
-                .fillMaxHeight(0.4f),
+                .fillMaxHeight(),
             candles = candles
         ) {}
-        HorizontalOrderBooksUI(modifier = Modifier.fillMaxHeight(1f), ask, bid)
     }
 }
 
 
 @Preview
 @Composable
-fun VerticalTradingUIPreview() {
-    VerticalTradingUI(listOf(), listOf(), ViewStates.Loading)
+fun HorizontalTradingUIPreview() {
+    HorizontalTradingUI(listOf(), listOf(), ViewStates.Loading)
 }

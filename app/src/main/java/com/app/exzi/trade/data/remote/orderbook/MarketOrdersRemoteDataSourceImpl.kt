@@ -1,4 +1,4 @@
-package com.app.exzi.trade.data.remote
+package com.app.exzi.trade.data.remote.orderbook
 
 import com.app.exzi.core.util.resultOf
 import com.app.exzi.trade.data.model.MarketOrdersDataModel

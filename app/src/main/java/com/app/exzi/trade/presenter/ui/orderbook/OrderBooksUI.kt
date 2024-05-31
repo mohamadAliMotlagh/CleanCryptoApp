@@ -16,13 +16,13 @@ import com.app.exzi.ui.theme.CleanCryptoAppTheme
 
 @Composable
 fun HorizontalOrderBooksUI(
+    modifier: Modifier = Modifier,
     ask: List<MarketOrderDomainModel>,
     bid: List<MarketOrderDomainModel>,
 ) {
 
     Row(
-        Modifier
-            .fillMaxWidth(1f)
+        modifier
             .padding(horizontal = 16.dp),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {

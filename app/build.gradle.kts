@@ -89,4 +89,6 @@ dependencies {
     implementation(libs.turbine)
 
     implementation(libs.androidx.constraintlayout.compose)
+
+    implementation("com.tradingview:lightweightcharts:4.0.0")
 }

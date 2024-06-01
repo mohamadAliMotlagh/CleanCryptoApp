@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.dp
 import com.app.exzi.core.viewstate.ViewStates
 import com.app.exzi.trade.domain.model.CandleDomainModel
 import com.app.exzi.trade.domain.model.MarketOrderDomainModel
-import com.app.exzi.trade.domain.model.market.MarketDomainModel
+import com.app.exzi.trade.domain.model.MarketDomainModel
 import com.app.exzi.trade.presenter.ui.coindetail.candle.CandleUI
 import com.app.exzi.trade.presenter.ui.coindetail.orderbook.HorizontalOrderBooksUI
 import com.app.exzi.trade.presenter.ui.coindetail.pair.PairDetailUI

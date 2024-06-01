@@ -7,6 +7,7 @@ import com.tradingview.lightweightcharts.api.series.models.BarData
 import com.tradingview.lightweightcharts.api.series.models.Time
 
 typealias CandleMapper = Mapper<List<CandleDataModel>, CandleDomainModel>
+//TODO it needs unit test
 fun candleDataModelToDomainModel(dataModel: List<CandleDataModel>): CandleDomainModel {
 
     return dataModel.sortedBy { it.time?:0  }.map {

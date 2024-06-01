@@ -8,7 +8,7 @@ import com.app.exzi.trade.domain.repositories.CandlesRepository
 import com.app.exzi.trade.domain.model.MarketOrderDomainModel
 import com.app.exzi.trade.domain.repositories.MarketOrdersRepository
 import com.app.exzi.trade.domain.model.CandleDomainModel
-import com.app.exzi.trade.domain.model.market.MarketDomainModel
+import com.app.exzi.trade.domain.model.MarketDomainModel
 import com.app.exzi.core.navigator.Navigator
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.cancel
@@ -19,6 +19,7 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+//TODO adding useCase instead of using repository
 @HiltViewModel
 class CoinDetailViewModel @Inject constructor(
     private val orderBook: MarketOrdersRepository,
@@ -41,14 +42,16 @@ class CoinDetailViewModel @Inject constructor(
         MutableStateFlow<ViewStates<MarketDomainModel>>(ViewStates.Loading)
     val marketDetailData: StateFlow<ViewStates<MarketDomainModel>> = _marketDetailData.asStateFlow()
 
+
     init {
+        //TODO hardcoded values must be reactive
         viewModelScope.launch {
             orderBook.getOrders("1041").collectLatest {
                 _askOrderBook.value = it.getOrNull()?.ask ?: listOf()
                 _bidOrderBook.value = it.getOrNull()?.bid ?: listOf()
             }
         }
-
+        //TODO hardcoded values must be reactive
         viewModelScope.launch {
             candlesRepository.getCandlesData("BTCUSDT").onSuccess {
                 _candles.value = ViewStates.Success(it)
@@ -56,7 +59,7 @@ class CoinDetailViewModel @Inject constructor(
                 _candles.value = ViewStates.Error(it.message ?: "")
             }
         }
-
+        //TODO hardcoded values must be reactive
         viewModelScope.launch {
             marketDetail("1041").collectLatest {
                 it.onSuccess {
@@ -69,7 +72,7 @@ class CoinDetailViewModel @Inject constructor(
         }
     }
 
-    fun navigateUp(){
+    fun navigateUp() {
         navigator.navigateUp()
     }
 

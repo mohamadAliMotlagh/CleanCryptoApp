@@ -2,13 +2,12 @@ package com.app.exzi.trade.data.mapper
 
 import com.app.exzi.core.util.Mapper
 import com.app.exzi.core.util.decimalNumberSeparator
-import com.app.exzi.core.util.numberSeparator
 import com.app.exzi.trade.data.model.market.MarketsDataModel
-import com.app.exzi.trade.domain.model.market.MarketDomainModel
+import com.app.exzi.trade.domain.model.MarketDomainModel
 import java.util.Locale
 
 typealias MarketMapper = Mapper<MarketsDataModel, List<MarketDomainModel>>
-
+//TODO it needs unit test
 fun marketDataModelToDomainModel(dataModel: MarketsDataModel): List<MarketDomainModel> {
     return dataModel.data?.map {
         MarketDomainModel(

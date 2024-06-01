@@ -14,7 +14,6 @@ data class BottomNavigationItem(
     val route: String = ""
 ) {
 
-    //function to get the list of bottomNavigationItems
     fun bottomNavigationItems(): List<BottomNavigationItem> {
         return listOf(
             BottomNavigationItem(

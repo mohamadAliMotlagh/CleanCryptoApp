@@ -11,15 +11,18 @@ import kotlinx.coroutines.flow.flow
 class MarketOrdersRepositoryImpl(
     private val remoteDataSource: MarketOrdersRemoteDataSource,
     private val orderBooksMapper: OrderBookMapper
-) :
-    MarketOrdersRepository {
+) : MarketOrdersRepository {
+    companion object {
+        private const val DELAY: Long = 1_000
+    }
+
     override suspend fun getOrders(pairID: String): Flow<Result<MarketOrdersDomainModel>> = flow {
         while (true) {
             val result = remoteDataSource.getOrdersFromApi(pairID).map {
                 orderBooksMapper(it)
             }
             emit(result)
-            delay(1000)
+            delay(DELAY)
         }
     }
 }

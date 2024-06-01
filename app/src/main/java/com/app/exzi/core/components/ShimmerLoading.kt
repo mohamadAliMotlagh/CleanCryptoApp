@@ -1,4 +1,4 @@
-package com.app.exzi.ui.theme.components
+package com.app.exzi.core.components
 
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.infiniteRepeatable
@@ -19,6 +19,7 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.unit.IntSize
 
+//TODO use shimmer for loading states in app.
 fun Modifier.shimmerEffect(color: Color,
                            shape: Shape = RectangleShape
 ): Modifier = composed {

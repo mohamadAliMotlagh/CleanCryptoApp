@@ -1,6 +1,7 @@
 package com.app.exzi.trade.presenter.ui.coindetail.candle
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -19,12 +20,15 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import com.app.exzi.core.viewstate.ViewStates
 import com.app.exzi.trade.domain.model.CandleDomainModel
+import com.app.exzi.ui.theme.CleanCryptoAppTheme
 import com.tradingview.lightweightcharts.api.chart.models.color.surface.SolidColor
 import com.tradingview.lightweightcharts.api.chart.models.color.toIntColor
 import com.tradingview.lightweightcharts.api.options.models.GridLineOptions
 import com.tradingview.lightweightcharts.api.options.models.GridOptions
 import com.tradingview.lightweightcharts.api.options.models.layoutOptions
 import com.tradingview.lightweightcharts.api.options.models.localizationOptions
+import com.tradingview.lightweightcharts.api.series.models.BarData
+import com.tradingview.lightweightcharts.api.series.models.Time
 import com.tradingview.lightweightcharts.runtime.plugins.DateTimeFormat
 import com.tradingview.lightweightcharts.runtime.plugins.PriceFormatter
 import com.tradingview.lightweightcharts.runtime.plugins.TimeFormatter
@@ -84,7 +88,7 @@ fun CandleUI(
 
 
                         api.addCandlestickSeries {
-                           it.setData(candles.data)
+                            it.setData(candles.data)
                         }
                     }
 
@@ -97,5 +101,22 @@ fun CandleUI(
 @Preview(showBackground = true)
 @Composable
 fun CandleUIPreview() {
-    CandleUI(modifier = Modifier.fillMaxSize(), ViewStates.Loading) {}
+    CleanCryptoAppTheme {
+        Box(Modifier.fillMaxSize()) {
+            CandleUI(
+                modifier = Modifier.fillMaxSize(),
+                ViewStates.Success(
+                    listOf(
+                        BarData(
+                            Time.StringTime("2024-01-01"),
+                            open = 100f,
+                            high = 150f,
+                            low = 90f,
+                            close = 120f
+                        )
+                    )
+                )
+            ) {}
+        }
+    }
 }

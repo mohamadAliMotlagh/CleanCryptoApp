@@ -32,7 +32,7 @@ import androidx.compose.ui.unit.dp
 import com.app.exzi.R
 import com.app.exzi.core.viewstate.ViewStates
 import com.app.exzi.trade.domain.model.MarketOrderDomainModel
-import com.app.exzi.trade.domain.model.market.MarketDomainModel
+import com.app.exzi.trade.domain.model.MarketDomainModel
 import com.app.exzi.trade.presenter.ui.cointrade.createorder.CreateOrderUI
 import com.app.exzi.trade.presenter.ui.cointrade.orderbook.VerticalOrderBookUI
 import com.app.exzi.ui.theme.Green

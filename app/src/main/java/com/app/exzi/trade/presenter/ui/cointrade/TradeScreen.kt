@@ -20,6 +20,5 @@ fun TradeScreen() {
         bid = bid,
         marketModel = market,
         showDetail = viewModel::navigateToDetail
-
     )
 }

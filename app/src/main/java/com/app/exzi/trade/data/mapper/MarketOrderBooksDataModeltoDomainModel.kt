@@ -8,7 +8,7 @@ import com.app.exzi.trade.domain.model.MarketOrderDomainModel
 import com.app.exzi.trade.domain.model.MarketOrdersDomainModel
 
 typealias OrderBookMapper = Mapper<MarketOrdersDataModel, MarketOrdersDomainModel>
-
+//TODO it needs unit test
 fun marketOrderBooksDataModelToDomainModel(marketOrderBooksDataModel: MarketOrdersDataModel): MarketOrdersDomainModel {
 
     val sellSum = ((marketOrderBooksDataModel.sell?.sumOf {

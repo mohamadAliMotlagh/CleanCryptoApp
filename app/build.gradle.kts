@@ -62,7 +62,14 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.constraintlayout.compose)
+    implementation(libs.androidx.material.icons.extended)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.material)
+    implementation(libs.accompanist.navigation.material)
     testImplementation(libs.junit)
+    implementation(libs.mockk)
+    implementation(libs.turbine)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
@@ -74,25 +81,18 @@ dependencies {
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.coroutines.test)
 
+    //hilt
     implementation(libs.google.hilt.android)
     implementation(libs.androidx.hilt.compose)
     ksp(libs.google.hilt.compiler)
 
-
+    //retrofit
     implementation(libs.retrofit)
     implementation(libs.retrofit.converter.gson)
     implementation(libs.retrofit.logger)
     implementation(libs.gson)
 
-    implementation(libs.mockk)
+    //chart
+    implementation(libs.lightweightcharts)
 
-    implementation(libs.turbine)
-
-    implementation(libs.androidx.constraintlayout.compose)
-
-    implementation("com.tradingview:lightweightcharts:4.0.0")
-    implementation("androidx.compose.material:material-icons-extended:1.6.7")
-    implementation("androidx.navigation:navigation-compose:2.7.7")
-    implementation("androidx.compose.material:material:1.6.7")
-    implementation("com.google.accompanist:accompanist-navigation-material:0.34.0")
 }

@@ -1,4 +1,4 @@
-package com.app.exzi.trade.domain.model.market
+package com.app.exzi.trade.domain.model
 
 import java.math.BigDecimal
 

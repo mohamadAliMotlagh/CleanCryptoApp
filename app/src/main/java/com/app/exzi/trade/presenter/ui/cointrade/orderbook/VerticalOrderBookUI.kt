@@ -2,7 +2,6 @@ package com.app.exzi.trade.presenter.ui.cointrade.orderbook
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.material.Text
@@ -13,7 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.app.exzi.core.viewstate.ViewStates
 import com.app.exzi.trade.domain.model.MarketOrderDomainModel
-import com.app.exzi.trade.domain.model.market.MarketDomainModel
+import com.app.exzi.trade.domain.model.MarketDomainModel
 import com.app.exzi.trade.presenter.ui.coindetail.orderbook.OrderBookList
 import com.app.exzi.ui.theme.Green
 import com.app.exzi.ui.theme.RED

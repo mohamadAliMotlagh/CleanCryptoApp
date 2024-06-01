@@ -9,8 +9,7 @@ This project implements a cryptocurrency trading panel using the Kotlin, adherin
 - **Trading Pair**: Show trading pair in trade page and coin detail page.
 - **Landscape Orientation**: Supports both portrait and landscape modes in coin detail page.
 - **SSL Pinning**: Enhances security by pinning SSL certificates.
-- 
-
+- **Unit testing**: write Unit test with TDD for orderbook repository.
 ## Technology Stack
 
 - **Kotlin**: Programming language.
@@ -18,6 +17,7 @@ This project implements a cryptocurrency trading panel using the Kotlin, adherin
 - **Kotlin Coroutines**: Asynchronous programming.
 - **Jetpack Compose**: Modern toolkit for building native Android UI.
 - **Clean Architecture**: Organizes code for separation of concerns.
+- **Turbine, Mockk, Junit**: for writing unit tests.
 
 ## API Endpoints
 

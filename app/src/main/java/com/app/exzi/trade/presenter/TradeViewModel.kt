@@ -1,13 +1,17 @@
 package com.app.exzi.trade.presenter
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.app.exzi.core.viewstate.ViewStates
-import com.app.exzi.trade.domain.CandlesRepository
+import com.app.exzi.trade.domain.SingleMarketDetailUseCase
+import com.app.exzi.trade.domain.repositories.CandlesRepository
 import com.app.exzi.trade.domain.model.MarketOrderDomainModel
-import com.app.exzi.trade.domain.MarketOrdersRepository
-import com.app.exzi.trade.domain.candle.CandleDomainModel
+import com.app.exzi.trade.domain.repositories.MarketOrdersRepository
+import com.app.exzi.trade.domain.model.CandleDomainModel
+import com.app.exzi.trade.domain.model.market.MarketDomainModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -18,7 +22,8 @@ import javax.inject.Inject
 @HiltViewModel
 class TradeViewModel @Inject constructor(
     private val orderBook: MarketOrdersRepository,
-    private val candlesRepository: CandlesRepository
+    private val candlesRepository: CandlesRepository,
+    private val marketDetail: SingleMarketDetailUseCase
 ) :
     ViewModel() {
     private val _askOrderBook = MutableStateFlow<List<MarketOrderDomainModel>>(emptyList())
@@ -30,6 +35,10 @@ class TradeViewModel @Inject constructor(
     private val _candles = MutableStateFlow<ViewStates<CandleDomainModel>>(ViewStates.Loading)
     val candles: StateFlow<ViewStates<CandleDomainModel>> = _candles.asStateFlow()
 
+    private val _marketDetailData =
+        MutableStateFlow<ViewStates<MarketDomainModel>>(ViewStates.Loading)
+    val marketDetailData: StateFlow<ViewStates<MarketDomainModel>> = _marketDetailData.asStateFlow()
+
     init {
         viewModelScope.launch {
             orderBook.getOrders("1041").collectLatest {
@@ -37,6 +46,7 @@ class TradeViewModel @Inject constructor(
                 _bidOrderBook.value = it.getOrNull()?.bid ?: listOf()
             }
         }
+
         viewModelScope.launch {
             candlesRepository.getCandlesData("BTCUSDT").onSuccess {
                 _candles.value = ViewStates.Success(it)
@@ -44,5 +54,18 @@ class TradeViewModel @Inject constructor(
                 _candles.value = ViewStates.Error(it.message ?: "")
             }
         }
+
+        viewModelScope.launch {
+            marketDetail("1041").collectLatest {
+                it.onSuccess {
+                    _marketDetailData.value = ViewStates.Success(it)
+                }.onFailure {
+                    _marketDetailData.value = ViewStates.Error(it.message ?: "")
+                    cancel()
+                }
+            }
+        }
     }
+
+
 }

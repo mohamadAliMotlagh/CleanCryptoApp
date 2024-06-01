@@ -2,17 +2,11 @@ package com.app.exzi.trade.data.di
 
 import com.app.exzi.core.networking.NetworkManager
 import com.app.exzi.trade.data.CandlesRepositoryImpl
-import com.app.exzi.trade.data.MarketOrdersRepositoryImpl
 import com.app.exzi.trade.data.mapper.candleDataModelToDomainModel
-import com.app.exzi.trade.data.mapper.marketOrderBooksDataModelToDomainModel
 import com.app.exzi.trade.data.network.CandleApi
-import com.app.exzi.trade.data.network.OrdersApi
 import com.app.exzi.trade.data.remote.candle.CandlesRemoteDataSource
 import com.app.exzi.trade.data.remote.candle.CandlesRemoteDataSourceImpl
-import com.app.exzi.trade.data.remote.orderbook.MarketOrdersRemoteDataSource
-import com.app.exzi.trade.data.remote.orderbook.MarketOrdersRemoteDataSourceImpl
-import com.app.exzi.trade.domain.CandlesRepository
-import com.app.exzi.trade.domain.MarketOrdersRepository
+import com.app.exzi.trade.domain.repositories.CandlesRepository
 import dagger.Binds
 import dagger.Module
 import dagger.Provides

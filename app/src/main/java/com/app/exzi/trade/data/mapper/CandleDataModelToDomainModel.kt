@@ -1,13 +1,12 @@
 package com.app.exzi.trade.data.mapper
 
+import com.app.exzi.core.util.Mapper
 import com.app.exzi.trade.data.model.candle.CandleDataModel
-import com.app.exzi.trade.domain.candle.CandleDomainModel
+import com.app.exzi.trade.domain.model.CandleDomainModel
 import com.tradingview.lightweightcharts.api.series.models.BarData
 import com.tradingview.lightweightcharts.api.series.models.Time
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
 
+typealias CandleMapper = Mapper<List<CandleDataModel>, CandleDomainModel>
 fun candleDataModelToDomainModel(dataModel: List<CandleDataModel>): CandleDomainModel {
 
     return dataModel.sortedBy { it.time?:0  }.map {

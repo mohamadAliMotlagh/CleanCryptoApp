@@ -6,7 +6,7 @@ import com.app.exzi.trade.data.mapper.marketOrderBooksDataModelToDomainModel
 import com.app.exzi.trade.data.network.OrdersApi
 import com.app.exzi.trade.data.remote.orderbook.MarketOrdersRemoteDataSource
 import com.app.exzi.trade.data.remote.orderbook.MarketOrdersRemoteDataSourceImpl
-import com.app.exzi.trade.domain.MarketOrdersRepository
+import com.app.exzi.trade.domain.repositories.MarketOrdersRepository
 import dagger.Binds
 import dagger.Module
 import dagger.Provides

@@ -1,4 +1,4 @@
-package com.app.exzi.trade.domain
+package com.app.exzi.trade.domain.repositories
 
 import com.app.exzi.trade.domain.model.MarketOrdersDomainModel
 import kotlinx.coroutines.flow.Flow

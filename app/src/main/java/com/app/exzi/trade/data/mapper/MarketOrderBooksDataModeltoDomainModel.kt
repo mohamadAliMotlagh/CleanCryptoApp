@@ -1,8 +1,13 @@
 package com.app.exzi.trade.data.mapper
 
+import com.app.exzi.core.util.Mapper
+import com.app.exzi.core.util.decimalNumberSeparator
+import com.app.exzi.trade.data.di.OrdersBookModule
 import com.app.exzi.trade.data.model.MarketOrdersDataModel
 import com.app.exzi.trade.domain.model.MarketOrderDomainModel
 import com.app.exzi.trade.domain.model.MarketOrdersDomainModel
+
+typealias OrderBookMapper = Mapper<MarketOrdersDataModel, MarketOrdersDomainModel>
 
 fun marketOrderBooksDataModelToDomainModel(marketOrderBooksDataModel: MarketOrdersDataModel): MarketOrdersDomainModel {
 
@@ -18,7 +23,7 @@ fun marketOrderBooksDataModelToDomainModel(marketOrderBooksDataModel: MarketOrde
         ask = marketOrderBooksDataModel.sell?.map {
 
             MarketOrderDomainModel(
-                price = it.rate_f ?: "",
+                price = (it.rate_f ?: "").decimalNumberSeparator(),
                 fraction = ((it.volume ?: 0) / sellSum) * 0.5f,
                 quantity = it.volume_f ?: ""
 
@@ -27,7 +32,7 @@ fun marketOrderBooksDataModelToDomainModel(marketOrderBooksDataModel: MarketOrde
 
         bid = marketOrderBooksDataModel.buy?.map {
             MarketOrderDomainModel(
-                price = it.rate_f ?: "",
+                price = (it.rate_f ?: "").decimalNumberSeparator(),
                 fraction = ((it.volume ?: 0) / buySum) * 0.5f,
                 quantity = it.volume_f ?: ""
 

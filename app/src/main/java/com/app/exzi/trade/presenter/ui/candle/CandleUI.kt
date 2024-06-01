@@ -15,7 +15,7 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.viewinterop.AndroidView
 import com.app.exzi.core.viewstate.ViewStates
-import com.app.exzi.trade.domain.candle.CandleDomainModel
+import com.app.exzi.trade.domain.model.CandleDomainModel
 import com.tradingview.lightweightcharts.api.chart.models.color.surface.SolidColor
 import com.tradingview.lightweightcharts.api.chart.models.color.toIntColor
 import com.tradingview.lightweightcharts.api.options.models.GridLineOptions

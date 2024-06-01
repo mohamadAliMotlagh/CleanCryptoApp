@@ -28,6 +28,7 @@ fun TradingScreen() {
     val ask by viewModel.askOrderBook.collectAsState()
     val bid by viewModel.bidOrderBook.collectAsState()
     val candles by viewModel.candles.collectAsState()
+    val market by viewModel.marketDetailData.collectAsState()
 
     Scaffold(Modifier.background(MaterialTheme.colorScheme.background)) { _ ->
         val configuration = LocalConfiguration.current
@@ -36,13 +37,16 @@ fun TradingScreen() {
             VerticalTradingUI(
                 ask = ask,
                 bid = bid,
-                candles = candles
+                candles = candles,
+                market
+
             )
         } else {
             HorizontalTradingUI(
                 ask = ask,
                 bid = bid,
-                candles = candles
+                candles = candles,
+                market
             )
         }
     }

@@ -33,7 +33,7 @@ data class Data(
     @SerializedName("high_f")
     val highF: String?,
     @SerializedName("_id")
-    val id: String?,
+    val _id: String?,
     @SerializedName("id")
     val id: Int?,
     @SerializedName("last_rate24")
@@ -71,7 +71,7 @@ data class Data(
     @SerializedName("pair_type")
     val pairType: Any?,
     @SerializedName("percent")
-    val percent: Double?,
+    val percent: Float?,
     @SerializedName("percentH")
     val percentH: Double?,
     @SerializedName("percentW")

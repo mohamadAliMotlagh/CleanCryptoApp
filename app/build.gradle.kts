@@ -92,4 +92,6 @@ dependencies {
 
     implementation("com.tradingview:lightweightcharts:4.0.0")
     implementation("androidx.compose.material:material-icons-extended:1.6.7")
+    implementation("androidx.navigation:navigation-compose:2.7.7")
+    implementation("androidx.compose.material:material:1.6.7")
 }

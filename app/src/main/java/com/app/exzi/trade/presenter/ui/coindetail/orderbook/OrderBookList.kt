@@ -1,4 +1,4 @@
-package com.app.exzi.trade.presenter.ui.orderbook
+package com.app.exzi.trade.presenter.ui.coindetail.orderbook
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn

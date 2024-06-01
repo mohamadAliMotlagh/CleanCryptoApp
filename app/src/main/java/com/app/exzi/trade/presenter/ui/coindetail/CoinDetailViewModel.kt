@@ -1,6 +1,5 @@
-package com.app.exzi.trade.presenter
+package com.app.exzi.trade.presenter.ui.coindetail
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.app.exzi.core.viewstate.ViewStates
@@ -10,7 +9,7 @@ import com.app.exzi.trade.domain.model.MarketOrderDomainModel
 import com.app.exzi.trade.domain.repositories.MarketOrdersRepository
 import com.app.exzi.trade.domain.model.CandleDomainModel
 import com.app.exzi.trade.domain.model.market.MarketDomainModel
-import com.tradingview.lightweightcharts.api.interfaces.SeriesApi
+import com.app.exzi.ui.navigator.Navigator
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -21,10 +20,11 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class TradeViewModel @Inject constructor(
+class CoinDetailViewModel @Inject constructor(
     private val orderBook: MarketOrdersRepository,
     private val candlesRepository: CandlesRepository,
-    private val marketDetail: SingleMarketDetailUseCase
+    private val marketDetail: SingleMarketDetailUseCase,
+    private val navigator: Navigator
 ) :
     ViewModel() {
     private val _askOrderBook = MutableStateFlow<List<MarketOrderDomainModel>>(emptyList())
@@ -69,9 +69,8 @@ class TradeViewModel @Inject constructor(
         }
     }
 
-    override fun onCleared() {
-        super.onCleared()
+    fun navigateUp(){
+        navigator.navigateUp()
     }
-
 
 }

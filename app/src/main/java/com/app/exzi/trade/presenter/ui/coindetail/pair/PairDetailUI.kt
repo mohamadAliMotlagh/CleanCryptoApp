@@ -1,4 +1,4 @@
-package com.app.exzi.trade.presenter.ui.pair
+package com.app.exzi.trade.presenter.ui.coindetail.pair
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -12,13 +12,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
-import com.app.exzi.components.shimmerEffect
+import com.app.exzi.ui.theme.components.shimmerEffect
 import com.app.exzi.core.viewstate.ViewStates
 import com.app.exzi.trade.domain.model.market.MarketDomainModel
 import com.app.exzi.ui.theme.CleanCryptoAppTheme
 import com.app.exzi.ui.theme.Green
 import com.app.exzi.ui.theme.RED
-import java.math.BigDecimal
 
 @Composable
 fun PairDetailUI(modifier: Modifier = Modifier, model: ViewStates<MarketDomainModel>) {

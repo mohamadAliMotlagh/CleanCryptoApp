@@ -1,4 +1,4 @@
-package com.app.exzi.components
+package com.app.exzi.ui.theme.components
 
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.infiniteRepeatable

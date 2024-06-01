@@ -42,6 +42,7 @@ object MarketsModule {
         )
     }
 
+    @Singleton
     @Provides
     fun provideSingleMarketDetailUseCase(repository: MarketsRepository): SingleMarketDetailUseCase {
         return SingleMarketDetailUseCase {

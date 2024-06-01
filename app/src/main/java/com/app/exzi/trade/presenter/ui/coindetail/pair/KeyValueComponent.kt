@@ -1,4 +1,4 @@
-package com.app.exzi.trade.presenter.ui.pair
+package com.app.exzi.trade.presenter.ui.coindetail.pair
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.MaterialTheme

@@ -1,4 +1,4 @@
-package com.app.exzi.trade.presenter.ui.candle
+package com.app.exzi.trade.presenter.ui.coindetail.candle
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -9,9 +9,6 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -24,7 +21,6 @@ import com.app.exzi.core.viewstate.ViewStates
 import com.app.exzi.trade.domain.model.CandleDomainModel
 import com.tradingview.lightweightcharts.api.chart.models.color.surface.SolidColor
 import com.tradingview.lightweightcharts.api.chart.models.color.toIntColor
-import com.tradingview.lightweightcharts.api.interfaces.SeriesApi
 import com.tradingview.lightweightcharts.api.options.models.GridLineOptions
 import com.tradingview.lightweightcharts.api.options.models.GridOptions
 import com.tradingview.lightweightcharts.api.options.models.layoutOptions

@@ -1,4 +1,4 @@
-package com.app.exzi.trade.presenter.ui
+package com.app.exzi.trade.presenter.ui.coindetail
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -16,10 +16,9 @@ import com.app.exzi.core.viewstate.ViewStates
 import com.app.exzi.trade.domain.model.CandleDomainModel
 import com.app.exzi.trade.domain.model.MarketOrderDomainModel
 import com.app.exzi.trade.domain.model.market.MarketDomainModel
-import com.app.exzi.trade.presenter.ui.candle.CandleUI
-import com.app.exzi.trade.presenter.ui.orderbook.HorizontalOrderBooksUI
-import com.app.exzi.trade.presenter.ui.pair.PairDetailUI
-import com.tradingview.lightweightcharts.api.interfaces.SeriesApi
+import com.app.exzi.trade.presenter.ui.coindetail.candle.CandleUI
+import com.app.exzi.trade.presenter.ui.coindetail.orderbook.HorizontalOrderBooksUI
+import com.app.exzi.trade.presenter.ui.coindetail.pair.PairDetailUI
 
 @Composable
 fun HorizontalTradingUI(

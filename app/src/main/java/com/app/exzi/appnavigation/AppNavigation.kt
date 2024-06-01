@@ -7,8 +7,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.app.exzi.main.MainPageUI
 import com.app.exzi.trade.presenter.ui.coindetail.TradingScreen
-import com.app.exzi.ui.navigator.Navigator
-import com.app.exzi.ui.navigator.NavigatorEvent
+import com.app.exzi.core.navigator.Navigator
+import com.app.exzi.core.navigator.NavigatorEvent
 
 
 @Composable

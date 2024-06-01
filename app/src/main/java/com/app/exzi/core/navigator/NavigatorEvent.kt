@@ -1,4 +1,4 @@
-package com.app.exzi.ui.navigator
+package com.app.exzi.core.navigator
 
 import android.os.Bundle
 import androidx.navigation.NavOptionsBuilder

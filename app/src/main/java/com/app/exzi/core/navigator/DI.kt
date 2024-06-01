@@ -1,4 +1,4 @@
-package com.app.exzi.ui.navigator
+package com.app.exzi.core.navigator
 
 import dagger.Module
 import dagger.Provides

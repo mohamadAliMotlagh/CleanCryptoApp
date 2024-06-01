@@ -11,7 +11,7 @@ import com.app.exzi.trade.domain.model.MarketOrderDomainModel
 import com.app.exzi.trade.domain.repositories.MarketOrdersRepository
 import com.app.exzi.trade.domain.model.CandleDomainModel
 import com.app.exzi.trade.domain.model.market.MarketDomainModel
-import com.app.exzi.ui.navigator.Navigator
+import com.app.exzi.core.navigator.Navigator
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.MutableStateFlow

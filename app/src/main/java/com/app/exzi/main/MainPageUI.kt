@@ -13,6 +13,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -29,44 +30,42 @@ import com.app.exzi.trade.presenter.ui.cointrade.TradeScreen
 @Composable
 fun MainPageUI() {
     var navigationSelectedItem by remember {
-        mutableStateOf(0)
+        mutableIntStateOf(2)
     }
     val navController = rememberNavController()
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         bottomBar = {
-            Box(Modifier.height(100.dp)) {
-                NavigationBar(containerColor = Color(0xFF151823)) {
-                    BottomNavigationItem().bottomNavigationItems()
-                        .forEachIndexed { index, navigationItem ->
-                            NavigationBarItem(
-                                selected = index == navigationSelectedItem,
-                                label = {
-                                    Text(
-                                        navigationItem.label,
-                                        color = MaterialTheme.colorScheme.onBackground
-                                    )
-                                },
-                                icon = {
-                                    Icon(
-                                        navigationItem.icon,
-                                        contentDescription = navigationItem.label,
-                                        modifier = Modifier.size(40.dp)
-                                    )
-                                },
-                                onClick = {
-                                    navigationSelectedItem = index
-                                    navController.navigate(navigationItem.route) {
-                                        popUpTo(navController.graph.findStartDestination().id) {
-                                            saveState = true
-                                        }
-                                        launchSingleTop = true
-                                        restoreState = true
+            NavigationBar(containerColor = Color(0xFF151823)) {
+                BottomNavigationItem().bottomNavigationItems()
+                    .forEachIndexed { index, navigationItem ->
+                        NavigationBarItem(
+                            selected = index == navigationSelectedItem,
+                            label = {
+                                Text(
+                                    navigationItem.label,
+                                    color = MaterialTheme.colorScheme.onBackground
+                                )
+                            },
+                            icon = {
+                                Icon(
+                                    navigationItem.icon,
+                                    contentDescription = navigationItem.label,
+                                    modifier = Modifier.size(40.dp)
+                                )
+                            },
+                            onClick = {
+                                navigationSelectedItem = index
+                                navController.navigate(navigationItem.route) {
+                                    popUpTo(navController.graph.findStartDestination().id) {
+                                        saveState = true
                                     }
+                                    launchSingleTop = true
+                                    restoreState = true
                                 }
-                            )
-                        }
-                }
+                            }
+                        )
+                    }
             }
 
         }

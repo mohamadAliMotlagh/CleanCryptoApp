@@ -1,6 +1,6 @@
 package com.app.exzi.appnavigation
 
-import com.app.exzi.ui.navigator.NavigationDestination
+import com.app.exzi.core.navigator.NavigationDestination
 
 sealed class Screens() : NavigationDestination {
     data object EXZI : Screens() {

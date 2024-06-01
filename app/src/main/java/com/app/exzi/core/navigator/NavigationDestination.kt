@@ -1,4 +1,4 @@
-package com.app.exzi.ui.navigator
+package com.app.exzi.core.navigator
 
 import androidx.compose.animation.AnimatedContentScope
 import androidx.compose.animation.EnterTransition

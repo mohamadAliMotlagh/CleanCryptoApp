@@ -54,7 +54,7 @@ fun CandleUI(
                 }
             }
 
-            ViewStates.Idle -> {}
+            ViewStates.Idle -> {}//TODO need to handle IDLE
             ViewStates.Loading -> {
                 CircularProgressIndicator()
             }

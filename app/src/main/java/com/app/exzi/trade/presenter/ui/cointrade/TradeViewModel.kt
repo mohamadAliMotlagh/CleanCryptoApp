@@ -3,6 +3,7 @@ package com.app.exzi.trade.presenter.ui.cointrade
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.app.exzi.appnavigation.Screens
+import com.app.exzi.core.di.IoDispatcher
 import com.app.exzi.core.navigator.Navigator
 import com.app.exzi.core.viewstate.ViewStates
 import com.app.exzi.trade.domain.SingleMarketDetailUseCase
@@ -10,11 +11,13 @@ import com.app.exzi.trade.domain.model.MarketOrderDomainModel
 import com.app.exzi.trade.domain.model.MarketDomainModel
 import com.app.exzi.trade.domain.repositories.MarketOrdersRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -23,7 +26,8 @@ import javax.inject.Inject
 class TradeViewModel @Inject constructor(
     private val orderBook: MarketOrdersRepository,
     private val marketDetail: SingleMarketDetailUseCase,
-    private val navigator: Navigator
+    private val navigator: Navigator,
+    @IoDispatcher private val ioDispatcher: CoroutineDispatcher,
 ) :
     ViewModel() {
     private val _askOrderBook = MutableStateFlow<List<MarketOrderDomainModel>>(emptyList())
@@ -51,7 +55,7 @@ class TradeViewModel @Inject constructor(
 
 
     private fun startPullingData() {
-        viewModelScope.launch {
+        viewModelScope.launch(ioDispatcher) {
             orderBook.getOrders(selectedPair.value).collectLatest {
                 _askOrderBook.value = it.getOrNull()?.ask ?: listOf()
                 _bidOrderBook.value = it.getOrNull()?.bid ?: listOf()
@@ -61,7 +65,7 @@ class TradeViewModel @Inject constructor(
 
 
         viewModelScope.launch {
-            marketDetail(selectedPair.value).collectLatest {
+            marketDetail(selectedPair.value).flowOn(ioDispatcher).collectLatest {
                 it.onSuccess {
                     _marketDetailData.value = ViewStates.Success(it)
                 }.onFailure {

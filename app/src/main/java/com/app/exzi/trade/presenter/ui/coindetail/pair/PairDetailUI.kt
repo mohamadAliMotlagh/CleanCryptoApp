@@ -24,8 +24,13 @@ fun PairDetailUI(modifier: Modifier = Modifier, model: ViewStates<MarketDomainMo
 
 
     when (model) {
-        is ViewStates.Error -> {}
-        ViewStates.Idle -> TODO()
+        is ViewStates.Error -> {
+            //TODO("Need to handle Error.")
+        }
+        ViewStates.Idle -> {
+            //TODO("Need to implement this or show loading")
+        }
+
         ViewStates.Loading -> {
             Box(modifier.shimmerEffect(MaterialTheme.colorScheme.onSecondary))
         }

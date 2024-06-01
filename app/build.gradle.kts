@@ -1,9 +1,12 @@
+import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
+
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
+    id("org.jlleitschuh.gradle.ktlint")
 }
 
 android {
@@ -27,10 +30,9 @@ android {
         release {
             isShrinkResources = true
             isMinifyEnabled = true
-            //isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
         }
         debug {}
@@ -52,6 +54,16 @@ android {
             excludes += "/META-INF/LICENSE.md"
             excludes += "/META-INF/LICENSE-notice.md"
         }
+    }
+}
+
+ktlint {
+    android.set(true)
+    ignoreFailures.set(false)
+    reporters {
+        reporter(ReporterType.PLAIN)
+        reporter(ReporterType.CHECKSTYLE)
+        reporter(ReporterType.SARIF)
     }
 }
 
@@ -84,18 +96,17 @@ dependencies {
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.coroutines.test)
 
-    //hilt
+    // hilt
     implementation(libs.google.hilt.android)
     implementation(libs.androidx.hilt.compose)
     ksp(libs.google.hilt.compiler)
 
-    //retrofit
+    // retrofit
     implementation(libs.retrofit)
     implementation(libs.retrofit.converter.gson)
     implementation(libs.retrofit.logger)
     implementation(libs.gson)
 
-    //chart
+    // chart
     implementation(libs.lightweightcharts)
-
 }

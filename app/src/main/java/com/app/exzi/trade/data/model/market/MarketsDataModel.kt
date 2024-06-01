@@ -1,8 +1,7 @@
 package com.app.exzi.trade.data.model.market
 
-
-import com.google.gson.annotations.SerializedName
 import androidx.annotation.Keep
+import com.google.gson.annotations.SerializedName
 
 @Keep
 data class MarketsDataModel(
@@ -11,5 +10,5 @@ data class MarketsDataModel(
     @SerializedName("is_login")
     val isLogin: Boolean?,
     @SerializedName("status")
-    val status: Boolean?
+    val status: Boolean?,
 )

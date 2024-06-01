@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit
 class NetworkManager {
     fun <T> create(serviceClass: Class<T>): T = getClient().create(serviceClass)
 
-    //TODO remove hardcoded base url and must be in BuildConfig.
+    // TODO remove hardcoded base url and must be in BuildConfig.
     private fun getClient(): Retrofit {
         return Retrofit.Builder()
             .baseUrl("https://socket.exzi.com") // its could be in BuildConfig.

@@ -5,9 +5,11 @@ import com.app.exzi.trade.data.model.market.MarketsDataModel
 import com.app.exzi.trade.data.network.MarketsApi
 import javax.inject.Inject
 
-class MarketsRemoteDataSourceImpl @Inject constructor(private val api: MarketsApi) :
+class MarketsRemoteDataSourceImpl
+    @Inject
+    constructor(private val api: MarketsApi) :
     MarketsRemoteDataSource {
-    override suspend fun getAllMarkets(): Result<MarketsDataModel> {
-        return resultOf { api.get() }
+        override suspend fun getAllMarkets(): Result<MarketsDataModel> {
+            return resultOf { api.get() }
+        }
     }
-}

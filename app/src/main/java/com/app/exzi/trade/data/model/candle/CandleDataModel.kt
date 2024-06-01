@@ -1,8 +1,6 @@
 package com.app.exzi.trade.data.model.candle
 
-
 import com.google.gson.annotations.SerializedName
-
 
 data class CandleDataModel(
     @SerializedName("close")
@@ -30,5 +28,5 @@ data class CandleDataModel(
     @SerializedName("volume")
     val volume: Long?,
     @SerializedName("volume_f")
-    val volumeF: String?
+    val volumeF: String?,
 )

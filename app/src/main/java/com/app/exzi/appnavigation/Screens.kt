@@ -25,8 +25,8 @@ sealed class Screens() : NavigationDestination {
 
     data object Main : Screens() {
         override fun route() = "main_route"
-
     }
+
     data object CoinDetail : Screens() {
         override fun route() = "coinDetail_route"
     }

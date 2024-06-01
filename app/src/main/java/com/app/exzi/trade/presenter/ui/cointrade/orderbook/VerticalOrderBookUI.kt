@@ -11,8 +11,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.app.exzi.core.viewstate.ViewStates
-import com.app.exzi.trade.domain.model.MarketOrderDomainModel
 import com.app.exzi.trade.domain.model.MarketDomainModel
+import com.app.exzi.trade.domain.model.MarketOrderDomainModel
 import com.app.exzi.trade.presenter.ui.coindetail.orderbook.OrderBookList
 import com.app.exzi.ui.theme.Green
 import com.app.exzi.ui.theme.RED
@@ -23,40 +23,41 @@ fun VerticalOrderBookUI(
     bid: List<MarketOrderDomainModel>,
     ask: List<MarketOrderDomainModel>,
     isDescending: Boolean,
-    market: ViewStates<MarketDomainModel>
+    market: ViewStates<MarketDomainModel>,
 ) {
     val dynamicTextColor =
         if (!isDescending) MaterialTheme.colorScheme.Green else MaterialTheme.colorScheme.RED
 
     Column(modifier, horizontalAlignment = Alignment.CenterHorizontally) {
         OrderBookList(
-            modifier = Modifier
-                .weight(0.4f)
-                .fillMaxWidth(),
+            modifier =
+                Modifier
+                    .weight(0.4f)
+                    .fillMaxWidth(),
             list = ask,
-            isBuy = true
+            isBuy = true,
         )
 
         if (market is ViewStates.Success) {
             Spacer(modifier = Modifier.height(8.dp))
             Text(
                 text = market.data.price,
-                color = dynamicTextColor
+                color = dynamicTextColor,
             )
             Text(
                 text = "=\'$\'${market.data.price}",
-                color = MaterialTheme.colorScheme.onBackground
+                color = MaterialTheme.colorScheme.onBackground,
             )
             Spacer(modifier = Modifier.height(8.dp))
         }
 
         OrderBookList(
-            modifier = Modifier
-                .weight(0.4f)
-                .fillMaxWidth(),
+            modifier =
+                Modifier
+                    .weight(0.4f)
+                    .fillMaxWidth(),
             list = bid,
-            isBuy = false
+            isBuy = false,
         )
     }
-
 }

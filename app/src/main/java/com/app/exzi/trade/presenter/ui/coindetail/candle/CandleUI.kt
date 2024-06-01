@@ -45,7 +45,7 @@ fun CandleUI(
     Column(
         modifier.clip(RoundedCornerShape(12.dp)),
         verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         when (candles) {
             is ViewStates.Error -> {
@@ -54,44 +54,44 @@ fun CandleUI(
                 }
             }
 
-            ViewStates.Idle -> {}//TODO need to handle IDLE
+            ViewStates.Idle -> {} // TODO need to handle IDLE
             ViewStates.Loading -> {
                 CircularProgressIndicator()
             }
 
             is ViewStates.Success -> {
-
-
                 AndroidView(modifier = Modifier.fillMaxSize(), factory = { ctx ->
 
                     ChartsView(ctx).apply {
                         api.applyOptions {
-                            layout = layoutOptions {
-                                background = SolidColor(backgroundColor)
-                                textColor = textColors
-                            }
-                            grid = GridOptions(
-                                vertLines = GridLineOptions(backgroundColor),
-                                horzLines = GridLineOptions(
-                                    Color.Gray.copy(alpha = 0.3f).toArgb().toIntColor()
+                            layout =
+                                layoutOptions {
+                                    background = SolidColor(backgroundColor)
+                                    textColor = textColors
+                                }
+                            grid =
+                                GridOptions(
+                                    vertLines = GridLineOptions(backgroundColor),
+                                    horzLines =
+                                        GridLineOptions(
+                                            Color.Gray.copy(alpha = 0.3f).toArgb().toIntColor(),
+                                        ),
                                 )
-                            )
-                            localization = localizationOptions {
-                                locale = "en-EN"
-                                priceFormatter = PriceFormatter(template = "{price:#2:#2}$")
-                                timeFormatter = TimeFormatter(
-                                    locale = "en-EN", dateTimeFormat = DateTimeFormat.DATE
-                                )
-                            }
-
+                            localization =
+                                localizationOptions {
+                                    locale = "en-EN"
+                                    priceFormatter = PriceFormatter(template = "{price:#2:#2}$")
+                                    timeFormatter =
+                                        TimeFormatter(
+                                            locale = "en-EN", dateTimeFormat = DateTimeFormat.DATE,
+                                        )
+                                }
                         }
-
 
                         api.addCandlestickSeries {
                             it.setData(candles.data)
                         }
                     }
-
                 })
             }
         }
@@ -112,10 +112,10 @@ fun CandleUIPreview() {
                             open = 100f,
                             high = 150f,
                             low = 90f,
-                            close = 120f
-                        )
-                    )
-                )
+                            close = 120f,
+                        ),
+                    ),
+                ),
             ) {}
         }
     }

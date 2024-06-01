@@ -32,47 +32,45 @@ fun OrderBookItem(
     modifier: Modifier = Modifier,
     data: MarketOrderDomainModel,
     isBuy: Boolean,
-    direction: LayoutDirection
+    direction: LayoutDirection,
 ) {
-
     CompositionLocalProvider(LocalLayoutDirection provides direction) {
-
         Box(
             modifier
                 .fillMaxWidth()
-                .height(20.dp)
+                .height(20.dp),
         ) {
-
-            Row() {
+            Row {
                 Box(
-                    modifier = Modifier
-                        .fillMaxHeight()
-                        .fillMaxWidth(fraction = data.fraction)
-                        .background(if (isBuy) MaterialTheme.colorScheme.GreenDarker else MaterialTheme.colorScheme.RedDarker)
+                    modifier =
+                        Modifier
+                            .fillMaxHeight()
+                            .fillMaxWidth(fraction = data.fraction)
+                            .background(if (isBuy) MaterialTheme.colorScheme.GreenDarker else MaterialTheme.colorScheme.RedDarker),
                 )
             }
 
             Row(
-                modifier = Modifier
-                    .fillMaxSize(),
+                modifier =
+                    Modifier
+                        .fillMaxSize(),
                 horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
+                verticalAlignment = Alignment.CenterVertically,
             ) {
                 Text(
                     text = data.price,
                     style = MaterialTheme.typography.bodyLarge,
-                    color = if (isBuy) MaterialTheme.colorScheme.Green else MaterialTheme.colorScheme.RED
+                    color = if (isBuy) MaterialTheme.colorScheme.Green else MaterialTheme.colorScheme.RED,
                 )
                 Text(
                     text = data.quantity,
                     style = MaterialTheme.typography.bodyLarge,
-                    color = MaterialTheme.colorScheme.onBackground
+                    color = MaterialTheme.colorScheme.onBackground,
                 )
             }
         }
     }
 }
-
 
 @Preview
 @Composable
@@ -82,14 +80,16 @@ fun OrderBookItemPreview() {
             (0..10).forEach {
                 Spacer(modifier = Modifier.height(1.dp))
                 OrderBookItem(
-                    data = MarketOrderDomainModel(
-                        price = "213213", fraction = 0.77f - (it / 12f), quantity = "0.112"
-                    ),
+                    data =
+                        MarketOrderDomainModel(
+                            price = "213213",
+                            fraction = 0.77f - (it / 12f),
+                            quantity = "0.112",
+                        ),
                     isBuy = it % 3 == 0,
-                    direction = if (it % 2 == 1) LayoutDirection.Ltr else LayoutDirection.Rtl
+                    direction = if (it % 2 == 1) LayoutDirection.Ltr else LayoutDirection.Rtl,
                 )
             }
         }
     }
-
 }

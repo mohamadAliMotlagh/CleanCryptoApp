@@ -25,16 +25,13 @@ object CandlesModule {
 
     @Singleton
     @Provides
-    fun provideCandleRepository(
-        remote: CandlesRemoteDataSource,
-    ): CandlesRepository {
+    fun provideCandleRepository(remote: CandlesRemoteDataSource): CandlesRepository {
         return CandlesRepositoryImpl(
             candlesRemoteDataSource = remote,
-            candleMapper = { candleDataModelToDomainModel(it) }
+            candleMapper = { candleDataModelToDomainModel(it) },
         )
     }
 }
-
 
 @Module
 @InstallIn(SingletonComponent::class)

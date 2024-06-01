@@ -20,15 +20,16 @@ import com.app.exzi.ui.theme.Green
 import com.app.exzi.ui.theme.RED
 
 @Composable
-fun PairDetailUI(modifier: Modifier = Modifier, model: ViewStates<MarketDomainModel>) {
-
-
+fun PairDetailUI(
+    modifier: Modifier = Modifier,
+    model: ViewStates<MarketDomainModel>,
+) {
     when (model) {
         is ViewStates.Error -> {
-            //TODO("Need to handle Error.")
+            // TODO("Need to handle Error.")
         }
         ViewStates.Idle -> {
-            //TODO("Need to implement this or show loading")
+            // TODO("Need to implement this or show loading")
         }
 
         ViewStates.Loading -> {
@@ -49,72 +50,79 @@ fun PairDetailUI(modifier: Modifier = Modifier, model: ViewStates<MarketDomainMo
                     text = market.price,
                     style = MaterialTheme.typography.headlineSmall,
                     color = dynamicTextColor,
-                    modifier = Modifier.constrainAs(price) {
-                        start.linkTo(parent.start)
-                    }
+                    modifier =
+                        Modifier.constrainAs(price) {
+                            start.linkTo(parent.start)
+                        },
                 )
 
                 Text(
                     text = market.price,
                     style = MaterialTheme.typography.labelMedium,
                     color = MaterialTheme.colorScheme.onBackground,
-                    modifier = Modifier.constrainAs(secondPrice) {
-                        start.linkTo(parent.start)
-                        top.linkTo(price.bottom, 8.dp)
-                    }
+                    modifier =
+                        Modifier.constrainAs(secondPrice) {
+                            start.linkTo(parent.start)
+                            top.linkTo(price.bottom, 8.dp)
+                        },
                 )
 
                 Text(
                     text = (if (isDescending) "" else "+") + market.percentChange.toString() + "%",
                     style = MaterialTheme.typography.labelMedium,
                     color = dynamicTextColor,
-                    modifier = Modifier.constrainAs(percent) {
-                        start.linkTo(secondPrice.end, 4.dp)
-                        top.linkTo(price.bottom, 8.dp)
-                    }
+                    modifier =
+                        Modifier.constrainAs(percent) {
+                            start.linkTo(secondPrice.end, 4.dp)
+                            top.linkTo(price.bottom, 8.dp)
+                        },
                 )
 
                 KeyValueComponent(
                     key = "24h Low",
                     value = market.low24h,
-                    modifier = Modifier.constrainAs(low24) {
-                        start.linkTo(volume24.start)
-                    })
+                    modifier =
+                        Modifier.constrainAs(low24) {
+                            start.linkTo(volume24.start)
+                        },
+                )
 
                 KeyValueComponent(
                     key = "24h High",
                     value = market.high24h,
-                    modifier = Modifier.constrainAs(high24) {
-                        start.linkTo(amount24.start)
-                    })
+                    modifier =
+                        Modifier.constrainAs(high24) {
+                            start.linkTo(amount24.start)
+                        },
+                )
 
                 KeyValueComponent(
                     key = "24h Amount(${market.mainName})",
                     value = market.volume24hBTC,
-                    modifier = Modifier.constrainAs(amount24) {
-                        end.linkTo(volume24.start, 16.dp)
-                        top.linkTo(high24.bottom, 8.dp)
-                    })
+                    modifier =
+                        Modifier.constrainAs(amount24) {
+                            end.linkTo(volume24.start, 16.dp)
+                            top.linkTo(high24.bottom, 8.dp)
+                        },
+                )
 
                 KeyValueComponent(
                     key = "24h Volume(${market.secondName})",
                     value = market.volume24hUSDT,
-                    modifier = Modifier.constrainAs(volume24) {
-                        end.linkTo(parent.end)
-                        top.linkTo(high24.bottom, 8.dp)
-                    })
-
-
+                    modifier =
+                        Modifier.constrainAs(volume24) {
+                            end.linkTo(parent.end)
+                            top.linkTo(high24.bottom, 8.dp)
+                        },
+                )
             }
         }
     }
-
-
 }
 
 @Preview(
     showBackground = true,
-    backgroundColor = 0xFF0E111a
+    backgroundColor = 0xFF0E111a,
 )
 @Composable
 fun PairDetailUIPreview() {
@@ -134,8 +142,8 @@ fun PairDetailUIPreview() {
                     volume24hBTC = "1234.56",
                     volume24hUSDT = "37000000.00",
                     percentChange = 0.3f,
-                )
-            )
+                ),
+            ),
         )
     }
 }

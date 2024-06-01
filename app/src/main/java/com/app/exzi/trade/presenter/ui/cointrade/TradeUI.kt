@@ -31,8 +31,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.app.exzi.R
 import com.app.exzi.core.viewstate.ViewStates
-import com.app.exzi.trade.domain.model.MarketOrderDomainModel
 import com.app.exzi.trade.domain.model.MarketDomainModel
+import com.app.exzi.trade.domain.model.MarketOrderDomainModel
 import com.app.exzi.trade.presenter.ui.cointrade.createorder.CreateOrderUI
 import com.app.exzi.trade.presenter.ui.cointrade.orderbook.VerticalOrderBookUI
 import com.app.exzi.ui.theme.Green
@@ -45,25 +45,27 @@ fun TradeUI(
     ask: List<MarketOrderDomainModel>,
     bid: List<MarketOrderDomainModel>,
     marketModel: ViewStates<MarketDomainModel>,
-    showDetail: () -> Unit
+    showDetail: () -> Unit,
 ) {
-
     val isDescending by remember {
         if (marketModel is ViewStates.Success) {
             mutableStateOf(marketModel.data.percentChange < 0)
-        } else mutableStateOf(false)
+        } else {
+            mutableStateOf(false)
+        }
     }
     val dynamicTextColor =
         if (!isDescending) MaterialTheme.colorScheme.Green else MaterialTheme.colorScheme.RED
 
     Scaffold(topBar = {
         Column {
-
             Spacer(modifier = Modifier.height(40.dp))
             Row(
-                horizontalArrangement = Arrangement.spacedBy(16.dp), modifier = Modifier.padding(
-                    8.dp
-                )
+                horizontalArrangement = Arrangement.spacedBy(16.dp),
+                modifier =
+                    Modifier.padding(
+                        8.dp,
+                    ),
             ) {
                 Text(text = "Spot")
                 Text(text = "Margin")
@@ -71,36 +73,33 @@ fun TradeUI(
             }
 
             TopAppBar(
-                colors = TopAppBarDefaults.topAppBarColors()
-                    .copy(containerColor = MaterialTheme.colorScheme.background),
-
+                colors =
+                    TopAppBarDefaults.topAppBarColors()
+                        .copy(containerColor = MaterialTheme.colorScheme.background),
                 title = {
                     if (marketModel is ViewStates.Success) {
                         Row(
                             Modifier.fillMaxHeight(),
-                            verticalAlignment = Alignment.CenterVertically
+                            verticalAlignment = Alignment.CenterVertically,
                         ) {
-
                             Icon(
                                 painter = painterResource(R.drawable.pair),
                                 contentDescription = "pair",
-                                tint = MaterialTheme.colorScheme.onBackground
+                                tint = MaterialTheme.colorScheme.onBackground,
                             )
                             Spacer(modifier = Modifier.width(4.dp))
                             Text(
                                 text = "${marketModel.data.mainName}/${marketModel.data.secondName}",
                                 style = MaterialTheme.typography.headlineSmall,
-                                color = MaterialTheme.colorScheme.onBackground
+                                color = MaterialTheme.colorScheme.onBackground,
                             )
 
                             Text(
                                 text = (if (isDescending) "" else "+") + marketModel.data.percentChange.toString() + "%",
                                 style = MaterialTheme.typography.labelMedium,
                                 color = dynamicTextColor,
-                                modifier = Modifier
+                                modifier = Modifier,
                             )
-
-
                         }
                     }
                 },
@@ -108,42 +107,41 @@ fun TradeUI(
                     Image(
                         painter = painterResource(R.drawable.chart),
                         contentDescription = "favorite",
-                        modifier = Modifier.clickable { showDetail() }
+                        modifier = Modifier.clickable { showDetail() },
                     )
                     Spacer(modifier = Modifier.width(8.dp))
                     Icon(
                         imageVector = Icons.Default.MoreVert,
                         contentDescription = "reply",
-                        tint = MaterialTheme.colorScheme.onBackground
+                        tint = MaterialTheme.colorScheme.onBackground,
                     )
-                }
+                },
             )
         }
     }) { paddingValues ->
 
-
         Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(paddingValues)
+            modifier =
+                Modifier
+                    .fillMaxSize()
+                    .padding(paddingValues),
         ) {
             Row(
                 Modifier
                     .fillMaxWidth()
-                    .fillMaxHeight(0.6f)
+                    .fillMaxHeight(0.6f),
             ) {
-
                 CreateOrderUI(
                     Modifier
                         .weight(0.6f)
-                        .fillMaxHeight()
+                        .fillMaxHeight(),
                 )
                 VerticalOrderBookUI(
                     modifier = Modifier.weight(0.4f),
                     bid = bid,
                     ask = ask,
                     isDescending = isDescending,
-                    market = marketModel
+                    market = marketModel,
                 )
             }
         }

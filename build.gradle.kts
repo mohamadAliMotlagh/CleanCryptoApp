@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.compose.compiler) apply false
     alias(libs.plugins.hilt) apply false
     alias(libs.plugins.ksp) apply false
+    id("org.jlleitschuh.gradle.ktlint") version "12.1.0" apply false
 }
 
 buildscript {

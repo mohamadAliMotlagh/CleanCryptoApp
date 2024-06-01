@@ -19,6 +19,6 @@ fun TradeScreen() {
         ask = ask,
         bid = bid,
         marketModel = market,
-        showDetail = viewModel::navigateToDetail
+        showDetail = viewModel::navigateToDetail,
     )
 }

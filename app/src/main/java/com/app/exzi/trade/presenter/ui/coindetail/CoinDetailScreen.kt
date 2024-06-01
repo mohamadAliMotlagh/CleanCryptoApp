@@ -37,40 +37,38 @@ import com.app.exzi.core.viewstate.ViewStates
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CoinDetailScreen() {
-
     val viewModel: CoinDetailViewModel = hiltViewModel()
     val ask by viewModel.askOrderBook.collectAsState()
     val bid by viewModel.bidOrderBook.collectAsState()
     val candles by viewModel.candles.collectAsState()
     val market by viewModel.marketDetailData.collectAsState()
 
-
-    Scaffold(Modifier.background(MaterialTheme.colorScheme.background),
+    Scaffold(
+        Modifier.background(MaterialTheme.colorScheme.background),
         topBar = {
             Column {
                 TopAppBar(
-                    colors = TopAppBarDefaults.topAppBarColors()
-                        .copy(containerColor = MaterialTheme.colorScheme.background),
-
+                    colors =
+                        TopAppBarDefaults.topAppBarColors()
+                            .copy(containerColor = MaterialTheme.colorScheme.background),
                     title = {
                         if (market is ViewStates.Success) {
                             val marketData = market as ViewStates.Success
                             Row(
                                 Modifier.fillMaxHeight(),
-                                verticalAlignment = Alignment.CenterVertically
+                                verticalAlignment = Alignment.CenterVertically,
                             ) {
                                 Icon(
                                     painter = painterResource(R.drawable.pair),
                                     contentDescription = "pair",
-                                    tint = MaterialTheme.colorScheme.onBackground
+                                    tint = MaterialTheme.colorScheme.onBackground,
                                 )
                                 Spacer(modifier = Modifier.width(4.dp))
                                 Text(
                                     text = "${marketData.data.mainName}/${marketData.data.secondName}",
                                     style = MaterialTheme.typography.headlineSmall,
-                                    color = MaterialTheme.colorScheme.onBackground
+                                    color = MaterialTheme.colorScheme.onBackground,
                                 )
-
                             }
                         }
                     },
@@ -79,9 +77,10 @@ fun CoinDetailScreen() {
                             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                             contentDescription = "ArrowBack",
                             tint = MaterialTheme.colorScheme.onBackground,
-                            modifier = Modifier.clickable {
-                                viewModel.navigateUp()
-                            }
+                            modifier =
+                                Modifier.clickable {
+                                    viewModel.navigateUp()
+                                },
                         )
                     },
                     actions = {
@@ -93,14 +92,14 @@ fun CoinDetailScreen() {
                         Icon(
                             painter = painterResource(R.drawable.reply),
                             contentDescription = "reply",
-                            tint = MaterialTheme.colorScheme.onBackground
+                            tint = MaterialTheme.colorScheme.onBackground,
                         )
-                    }
+                    },
                 )
                 HorizontalDivider(color = Color(0xFF333C57))
             }
-        })
-    { padding ->
+        },
+    ) { padding ->
         val configuration = LocalConfiguration.current
 
         if (configuration.orientation == ORIENTATION_PORTRAIT) {
@@ -111,7 +110,7 @@ fun CoinDetailScreen() {
                 ask = ask,
                 bid = bid,
                 candles = candles,
-                marketModel = market
+                marketModel = market,
             )
         } else {
             HorizontalTradingUI(
@@ -122,7 +121,7 @@ fun CoinDetailScreen() {
                 ask = ask,
                 bid = bid,
                 candles = candles,
-                market
+                market,
             )
         }
     }

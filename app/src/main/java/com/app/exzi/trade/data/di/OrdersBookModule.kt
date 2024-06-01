@@ -25,16 +25,13 @@ object OrdersBookModule {
 
     @Singleton
     @Provides
-    fun provideOrderBookRepository(
-        remote: MarketOrdersRemoteDataSource,
-        ): MarketOrdersRepository {
+    fun provideOrderBookRepository(remote: MarketOrdersRemoteDataSource): MarketOrdersRepository {
         return MarketOrdersRepositoryImpl(
             remoteDataSource = remote,
-            orderBooksMapper = { marketOrderBooksDataModelToDomainModel(it) }
+            orderBooksMapper = { marketOrderBooksDataModelToDomainModel(it) },
         )
     }
 }
-
 
 @Module
 @InstallIn(SingletonComponent::class)

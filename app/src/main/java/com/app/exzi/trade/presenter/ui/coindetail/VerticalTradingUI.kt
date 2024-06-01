@@ -12,8 +12,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.app.exzi.core.viewstate.ViewStates
 import com.app.exzi.trade.domain.model.CandleDomainModel
-import com.app.exzi.trade.domain.model.MarketOrderDomainModel
 import com.app.exzi.trade.domain.model.MarketDomainModel
+import com.app.exzi.trade.domain.model.MarketOrderDomainModel
 import com.app.exzi.trade.presenter.ui.coindetail.candle.CandleUI
 import com.app.exzi.trade.presenter.ui.coindetail.orderbook.HorizontalOrderBooksUI
 import com.app.exzi.trade.presenter.ui.coindetail.pair.PairDetailUI
@@ -26,27 +26,25 @@ fun VerticalTradingUI(
     candles: ViewStates<CandleDomainModel>,
     marketModel: ViewStates<MarketDomainModel>,
 ) {
-
-
     Column(modifier.padding(horizontal = 16.dp)) {
         Spacer(modifier = Modifier.height(16.dp))
         PairDetailUI(
             modifier = Modifier.fillMaxWidth(),
-            model = marketModel
+            model = marketModel,
         )
         Spacer(modifier = Modifier.height(16.dp))
         CandleUI(
-            modifier = Modifier
-                .fillMaxWidth()
-                .fillMaxHeight(0.4f),
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .fillMaxHeight(0.4f),
             candles = candles,
-            retryLoadCandles = {}
+            retryLoadCandles = {},
         )
         Spacer(modifier = Modifier.height(16.dp))
         HorizontalOrderBooksUI(modifier = Modifier.fillMaxHeight(1f), ask, bid)
     }
 }
-
 
 @Preview
 @Composable
@@ -56,6 +54,6 @@ fun VerticalTradingUIPreview() {
         listOf(),
         listOf(),
         ViewStates.Loading,
-        ViewStates.Loading
+        ViewStates.Loading,
     )
 }

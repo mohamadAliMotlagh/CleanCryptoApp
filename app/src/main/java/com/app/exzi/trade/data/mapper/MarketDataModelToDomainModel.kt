@@ -7,7 +7,8 @@ import com.app.exzi.trade.domain.model.MarketDomainModel
 import java.util.Locale
 
 typealias MarketMapper = Mapper<MarketsDataModel, List<MarketDomainModel>>
-//TODO it needs unit test
+
+// TODO it needs unit test
 fun marketDataModelToDomainModel(dataModel: MarketsDataModel): List<MarketDomainModel> {
     return dataModel.data?.map {
         MarketDomainModel(
@@ -19,10 +20,18 @@ fun marketDataModelToDomainModel(dataModel: MarketsDataModel): List<MarketDomain
             high24h = (it?.highF ?: "").decimalNumberSeparator(),
             low24h = (it?.lowF ?: "").decimalNumberSeparator(),
             volume24hBTC = (it?.volumeF ?: "").decimalNumberSeparator(),
-            volume24hUSDT = ((it?.volumeF ?: "0").toBigDecimal() * (it?.rateF
-                ?: "0").toBigDecimal()).toString().decimalNumberSeparator(), //Amount 24
-            percentChange = String.format(Locale.getDefault(), "%.2f", it?.percent ?: 0.0f)
-                .toFloat()
+            volume24hUSDT =
+                (
+                    (it?.volumeF ?: "0").toBigDecimal() *
+                        (
+                            it?.rateF
+                                ?: "0"
+                        ).toBigDecimal()
+                ).toString().decimalNumberSeparator(),
+            // Amount 24
+            percentChange =
+                String.format(Locale.getDefault(), "%.2f", it?.percent ?: 0.0f)
+                    .toFloat(),
         )
     } ?: listOf()
 }

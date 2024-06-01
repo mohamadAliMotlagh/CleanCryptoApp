@@ -6,9 +6,10 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
 fun interface SingleMarketDetailUseCase : suspend (String) -> Flow<Result<MarketDomainModel>>
+
 suspend fun singleMarketDetailUseCase(
     pairID: String,
-    repository: MarketsRepository
+    repository: MarketsRepository,
 ): Flow<Result<MarketDomainModel>> {
     return repository.getAllMarkets().map { result ->
         result.mapCatching { list ->

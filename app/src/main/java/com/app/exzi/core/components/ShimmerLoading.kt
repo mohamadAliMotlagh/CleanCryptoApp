@@ -19,35 +19,41 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.unit.IntSize
 
-//TODO use shimmer for loading states in app.
-fun Modifier.shimmerEffect(color: Color,
-                           shape: Shape = RectangleShape
-): Modifier = composed {
-    var size by remember {
-        mutableStateOf(IntSize.Zero)
-    }
-    val transition = rememberInfiniteTransition(label = "shimmer Infinite")
-    val startOffsetX by transition.animateFloat(
-        initialValue = -2 * size.width.toFloat(),
-        targetValue = 2 * size.width.toFloat(),
-        animationSpec = infiniteRepeatable(
-            animation = tween(1500)
-        ), label = "shimmer animation"
-    )
-
-    background(
-        brush = Brush.linearGradient(
-            colors = listOf(
-                color,
-                Color(0xFF8F8B8B),
-                color,
-            ),
-            start = Offset(startOffsetX, 0f),
-            end = Offset(startOffsetX + size.width.toFloat(), size.height.toFloat())
-        ),
-        shape = shape
-    )
-        .onGloballyPositioned {
-            size = it.size
+// TODO use shimmer for loading states in app.
+fun Modifier.shimmerEffect(
+    color: Color,
+    shape: Shape = RectangleShape,
+): Modifier =
+    composed {
+        var size by remember {
+            mutableStateOf(IntSize.Zero)
         }
-}
+        val transition = rememberInfiniteTransition(label = "shimmer Infinite")
+        val startOffsetX by transition.animateFloat(
+            initialValue = -2 * size.width.toFloat(),
+            targetValue = 2 * size.width.toFloat(),
+            animationSpec =
+                infiniteRepeatable(
+                    animation = tween(1500),
+                ),
+            label = "shimmer animation",
+        )
+
+        background(
+            brush =
+                Brush.linearGradient(
+                    colors =
+                        listOf(
+                            color,
+                            Color(0xFF8F8B8B),
+                            color,
+                        ),
+                    start = Offset(startOffsetX, 0f),
+                    end = Offset(startOffsetX + size.width.toFloat(), size.height.toFloat()),
+                ),
+            shape = shape,
+        )
+            .onGloballyPositioned {
+                size = it.size
+            }
+    }

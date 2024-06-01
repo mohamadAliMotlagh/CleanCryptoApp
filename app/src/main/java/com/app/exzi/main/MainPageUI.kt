@@ -2,7 +2,6 @@ package com.app.exzi.main
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
@@ -14,7 +13,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
@@ -44,14 +42,14 @@ fun MainPageUI() {
                             label = {
                                 Text(
                                     navigationItem.label,
-                                    color = MaterialTheme.colorScheme.onBackground
+                                    color = MaterialTheme.colorScheme.onBackground,
                                 )
                             },
                             icon = {
                                 Icon(
                                     navigationItem.icon,
                                     contentDescription = navigationItem.label,
-                                    modifier = Modifier.size(40.dp)
+                                    modifier = Modifier.size(40.dp),
                                 )
                             },
                             onClick = {
@@ -63,19 +61,17 @@ fun MainPageUI() {
                                     launchSingleTop = true
                                     restoreState = true
                                 }
-                            }
+                            },
                         )
                     }
             }
-
-        }
+        },
     ) { paddingValues ->
         NavHost(
             navController = navController,
             startDestination = Screens.Trade.route(),
-            modifier = Modifier.padding(paddingValues = paddingValues)
+            modifier = Modifier.padding(paddingValues = paddingValues),
         ) {
-
             composable(Screens.EXZI.route()) {
                 Box(modifier = Modifier.fillMaxSize())
             }

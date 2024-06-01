@@ -15,7 +15,7 @@ fun OrderBookList(
     modifier: Modifier = Modifier,
     list: List<MarketOrderDomainModel>,
     isBuy: Boolean,
-    direction: LayoutDirection = LayoutDirection.Ltr
+    direction: LayoutDirection = LayoutDirection.Ltr,
 ) {
     LazyColumn(modifier.fillMaxSize()) {
         items(list) {
@@ -29,15 +29,16 @@ fun OrderBookList(
 fun OrderBookListPreview() {
     CleanCryptoAppTheme {
         OrderBookList(
-            list = (0..10).map {
-                MarketOrderDomainModel(
-                    price = "213213",
-                    fraction = 0.77f - (it / 12f),
-                    quantity = "0.112"
-                )
-            },
+            list =
+                (0..10).map {
+                    MarketOrderDomainModel(
+                        price = "213213",
+                        fraction = 0.77f - (it / 12f),
+                        quantity = "0.112",
+                    )
+                },
             isBuy = true,
-            direction = LayoutDirection.Ltr
+            direction = LayoutDirection.Ltr,
         )
     }
 }
@@ -47,15 +48,16 @@ fun OrderBookListPreview() {
 fun OrderBookListPreviewSell() {
     CleanCryptoAppTheme {
         OrderBookList(
-            list = (0..10).map {
-                MarketOrderDomainModel(
-                    price = "213213",
-                    fraction = 0.77f - (it / 12f),
-                    quantity = "0.112"
-                )
-            },
+            list =
+                (0..10).map {
+                    MarketOrderDomainModel(
+                        price = "213213",
+                        fraction = 0.77f - (it / 12f),
+                        quantity = "0.112",
+                    )
+                },
             isBuy = false,
-            direction = LayoutDirection.Rtl
+            direction = LayoutDirection.Rtl,
         )
     }
 }

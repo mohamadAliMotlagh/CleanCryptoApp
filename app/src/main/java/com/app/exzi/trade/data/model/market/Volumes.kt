@@ -1,8 +1,7 @@
 package com.app.exzi.trade.data.model.market
 
-
-import com.google.gson.annotations.SerializedName
 import androidx.annotation.Keep
+import com.google.gson.annotations.SerializedName
 
 @Keep
 data class Volumes(
@@ -11,5 +10,5 @@ data class Volumes(
     @SerializedName("m")
     val m: Double?,
     @SerializedName("w")
-    val w: Double?
+    val w: Double?,
 )

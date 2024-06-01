@@ -9,18 +9,21 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.app.exzi.ui.theme.CleanCryptoAppTheme
 
 @Composable
-fun KeyValueComponent(modifier: Modifier = Modifier, key: String, value: String) {
-
+fun KeyValueComponent(
+    modifier: Modifier = Modifier,
+    key: String,
+    value: String,
+) {
     Column(modifier) {
         Text(
             text = key,
             style = MaterialTheme.typography.bodySmall,
-            color = MaterialTheme.colorScheme.onSecondary
+            color = MaterialTheme.colorScheme.onSecondary,
         )
         Text(
             text = value,
             style = MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.colorScheme.onBackground
+            color = MaterialTheme.colorScheme.onBackground,
         )
     }
 }
@@ -30,6 +33,5 @@ fun KeyValueComponent(modifier: Modifier = Modifier, key: String, value: String)
 fun KeyValueComponentPreview() {
     CleanCryptoAppTheme {
         KeyValueComponent(key = "24h Volume(USDT)", value = "112.76M")
-
     }
 }

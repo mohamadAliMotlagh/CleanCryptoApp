@@ -6,33 +6,32 @@ import com.app.exzi.trade.domain.model.MarketOrdersDomainModel
 import com.google.gson.Gson
 
 object Dummy {
-
     val domainOrderBook: MarketOrdersDomainModel
         get() {
             val avg = (0..100).sum() / 101
             return MarketOrdersDomainModel(
                 bid =
-                (0..100).map {
-                    MarketOrderDomainModel(
-                        price = (it * 2000).toString(),
-                        fraction = (it / avg) * 0.5f,
-                        quantity = it.toString()
-                    )
-                },
+                    (0..100).map {
+                        MarketOrderDomainModel(
+                            price = (it * 2000).toString(),
+                            fraction = (it / avg) * 0.5f,
+                            quantity = it.toString(),
+                        )
+                    },
                 ask =
-                (0..100).map {
-                    MarketOrderDomainModel(
-                        price = (it * 2000).toString(),
-                        fraction = (it / avg) * 0.5f,
-                        quantity = it.toString()
-                    )
-                }
-
+                    (0..100).map {
+                        MarketOrderDomainModel(
+                            price = (it * 2000).toString(),
+                            fraction = (it / avg) * 0.5f,
+                            quantity = it.toString(),
+                        )
+                    },
             )
         }
     val orderBooksRAW: MarketOrdersDataModel
         get() {
-            val json: String = """
+            val json: String =
+                """
                 {
                   "buy": [
                     {
@@ -440,7 +439,7 @@ object Dummy {
                   ]
                 }
                 
-            """.trimIndent()
+                """.trimIndent()
 
             return Gson().fromJson<MarketOrdersDataModel>(json, MarketOrdersDataModel::class.java)
         }

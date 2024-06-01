@@ -1,8 +1,7 @@
 package com.app.exzi.trade.data.model.market
 
-
-import com.google.gson.annotations.SerializedName
 import androidx.annotation.Keep
+import com.google.gson.annotations.SerializedName
 
 @Keep
 data class Second(
@@ -21,5 +20,5 @@ data class Second(
     @SerializedName("rate_usd")
     val rateUsd: Long?,
     @SerializedName("rate_usdt")
-    val rateUsdt: Long?
+    val rateUsdt: Long?,
 )

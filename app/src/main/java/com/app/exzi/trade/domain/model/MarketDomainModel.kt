@@ -1,7 +1,5 @@
 package com.app.exzi.trade.domain.model
 
-import java.math.BigDecimal
-
 data class MarketDomainModel(
     val name: String,
     val mainName: String,

@@ -18,16 +18,15 @@ fun HorizontalOrderBooksUI(
     ask: List<MarketOrderDomainModel>,
     bid: List<MarketOrderDomainModel>,
 ) {
-
     Row(
         modifier,
-        horizontalArrangement = Arrangement.SpaceBetween
+        horizontalArrangement = Arrangement.SpaceBetween,
     ) {
         OrderBookList(
             Modifier.weight(1f),
             list = bid,
             isBuy = true,
-            LayoutDirection.Rtl
+            LayoutDirection.Rtl,
         )
         Spacer(modifier = Modifier.width(8.dp))
         OrderBookList(
@@ -38,25 +37,27 @@ fun HorizontalOrderBooksUI(
     }
 }
 
-
 @Composable
 @Preview(showBackground = true, backgroundColor = 0xFF0E111a)
 fun OrderBooksUIPreview() {
     CleanCryptoAppTheme {
-
-
-        HorizontalOrderBooksUI(ask = (0..100).map {
-            MarketOrderDomainModel(
-                price = "213213",
-                fraction = 0.77f - (it / 10001f),
-                quantity = "0.112"
-            )
-        }, bid = (0..100).map {
-            MarketOrderDomainModel(
-                price = "213213",
-                fraction = 0.77f - (it / 10001),
-                quantity = "0.112"
-            )
-        })
+        HorizontalOrderBooksUI(
+            ask =
+                (0..100).map {
+                    MarketOrderDomainModel(
+                        price = "213213",
+                        fraction = 0.77f - (it / 10001f),
+                        quantity = "0.112",
+                    )
+                },
+            bid =
+                (0..100).map {
+                    MarketOrderDomainModel(
+                        price = "213213",
+                        fraction = 0.77f - (it / 10001),
+                        quantity = "0.112",
+                    )
+                },
+        )
     }
 }

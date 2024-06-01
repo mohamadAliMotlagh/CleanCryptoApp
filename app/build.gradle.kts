@@ -91,4 +91,5 @@ dependencies {
     implementation(libs.androidx.constraintlayout.compose)
 
     implementation("com.tradingview:lightweightcharts:4.0.0")
+    implementation("androidx.compose.material:material-icons-extended:1.6.7")
 }

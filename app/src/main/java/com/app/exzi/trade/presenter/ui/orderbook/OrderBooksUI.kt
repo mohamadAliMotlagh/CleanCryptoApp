@@ -22,8 +22,7 @@ fun HorizontalOrderBooksUI(
 ) {
 
     Row(
-        modifier
-            .padding(horizontal = 16.dp),
+        modifier,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         OrderBookList(

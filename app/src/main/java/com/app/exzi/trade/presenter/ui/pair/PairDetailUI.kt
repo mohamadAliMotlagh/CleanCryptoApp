@@ -74,21 +74,21 @@ fun PairDetailUI(modifier: Modifier = Modifier, model: ViewStates<MarketDomainMo
                     key = "24h Low",
                     value = market.low24h,
                     modifier = Modifier.constrainAs(low24) {
-                        end.linkTo(parent.end)
+                        start.linkTo(volume24.start)
                     })
 
                 KeyValueComponent(
                     key = "24h High",
                     value = market.high24h,
                     modifier = Modifier.constrainAs(high24) {
-                        end.linkTo(low24.start, 64.dp)
+                        start.linkTo(amount24.start)
                     })
 
                 KeyValueComponent(
                     key = "24h Amount(${market.mainName})",
                     value = market.high24h,
                     modifier = Modifier.constrainAs(amount24) {
-                        start.linkTo(high24.start)
+                        end.linkTo(volume24.start, 16.dp)
                         top.linkTo(high24.bottom, 8.dp)
                     })
 
@@ -96,7 +96,7 @@ fun PairDetailUI(modifier: Modifier = Modifier, model: ViewStates<MarketDomainMo
                     key = "24h Volume(${market.secondName})",
                     value = market.high24h,
                     modifier = Modifier.constrainAs(volume24) {
-                        start.linkTo(low24.start)
+                        end.linkTo(parent.end)
                         top.linkTo(high24.bottom, 8.dp)
                     })
 

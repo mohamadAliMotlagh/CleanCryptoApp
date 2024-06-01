@@ -10,6 +10,7 @@ import com.app.exzi.trade.domain.model.MarketOrderDomainModel
 import com.app.exzi.trade.domain.repositories.MarketOrdersRepository
 import com.app.exzi.trade.domain.model.CandleDomainModel
 import com.app.exzi.trade.domain.model.market.MarketDomainModel
+import com.tradingview.lightweightcharts.api.interfaces.SeriesApi
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -34,6 +35,7 @@ class TradeViewModel @Inject constructor(
 
     private val _candles = MutableStateFlow<ViewStates<CandleDomainModel>>(ViewStates.Loading)
     val candles: StateFlow<ViewStates<CandleDomainModel>> = _candles.asStateFlow()
+
 
     private val _marketDetailData =
         MutableStateFlow<ViewStates<MarketDomainModel>>(ViewStates.Loading)
@@ -65,6 +67,10 @@ class TradeViewModel @Inject constructor(
                 }
             }
         }
+    }
+
+    override fun onCleared() {
+        super.onCleared()
     }
 
 

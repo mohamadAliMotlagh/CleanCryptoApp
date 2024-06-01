@@ -3,21 +3,28 @@ package com.app.exzi.trade.presenter.ui.candle
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import com.app.exzi.core.viewstate.ViewStates
 import com.app.exzi.trade.domain.model.CandleDomainModel
 import com.tradingview.lightweightcharts.api.chart.models.color.surface.SolidColor
 import com.tradingview.lightweightcharts.api.chart.models.color.toIntColor
+import com.tradingview.lightweightcharts.api.interfaces.SeriesApi
 import com.tradingview.lightweightcharts.api.options.models.GridLineOptions
 import com.tradingview.lightweightcharts.api.options.models.GridOptions
 import com.tradingview.lightweightcharts.api.options.models.layoutOptions
@@ -31,12 +38,12 @@ import com.tradingview.lightweightcharts.view.ChartsView
 fun CandleUI(
     modifier: Modifier,
     candles: ViewStates<CandleDomainModel>,
-    retryLoadCandles: () -> Unit
+    retryLoadCandles: () -> Unit,
 ) {
-    val backgroundColor = MaterialTheme.colorScheme.background.toArgb().toIntColor()
+    val backgroundColor = Color(0xFF1B1F2D).toArgb().toIntColor()
     val textColors = MaterialTheme.colorScheme.onBackground.toArgb().toIntColor()
     Column(
-        modifier,
+        modifier.clip(RoundedCornerShape(12.dp)),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -53,7 +60,10 @@ fun CandleUI(
             }
 
             is ViewStates.Success -> {
+
+
                 AndroidView(modifier = Modifier.fillMaxSize(), factory = { ctx ->
+
                     ChartsView(ctx).apply {
                         api.applyOptions {
                             layout = layoutOptions {
@@ -75,8 +85,10 @@ fun CandleUI(
                             }
 
                         }
+
+
                         api.addCandlestickSeries {
-                            it.setData(candles.data)
+                           it.setData(candles.data)
                         }
                     }
 

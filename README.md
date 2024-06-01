@@ -26,10 +26,27 @@ This project implements a cryptocurrency trading panel using the Kotlin, adherin
 - **Order Book Data**: 
   - `https://socket.exzi.com/book/list?pair_id=1041&buy=1&sell=1`
   - `https://api.exzi.com/api/default/ticker`
+ 
+
+## Structure
+<img width="320" alt="Screenshot 2024-06-02 at 00 15 43" src="https://github.com/mohamadAliMotlagh/CleanCryptoApp/assets/4753472/361cbfd0-eef4-45f2-ad54-1443e96e993b">
     
 ## Screenshots
 
-<img src="https://github.com/mohamadAliMotlagh/CleanCryptoApp/assets/4753472/db178b37-377a-4643-9296-bd775020e508" alt="Screenshot" width="500"/>
+for seeing this page you must click on chart icon in trade page.
+<img width="346" alt="Screenshot 2024-06-01 at 22 32 25" src="https://github.com/mohamadAliMotlagh/CleanCryptoApp/assets/4753472/338f5913-3484-4353-88dc-89b73a77711c" width="345" height = "50"/>
+
+
+
+
+
 <img src="https://github.com/mohamadAliMotlagh/CleanCryptoApp/assets/4753472/f7cdd55f-f500-4008-8b6f-e8d2c5feaf98" alt="Screenshot" width="300" height = "668"/>
+<img src="https://github.com/mohamadAliMotlagh/CleanCryptoApp/assets/4753472/db178b37-377a-4643-9296-bd775020e508" alt="Screenshot" width="500"/>
+
+### APK File:
+you can download the apk file from here:
+[Download File](https://drive.google.com/file/d/1bSV5h5Ue32yAcdwlgdjqIce80x85t76T/view?usp=sharing)
+
+
 
 

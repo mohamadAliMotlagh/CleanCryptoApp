@@ -63,5 +63,11 @@ fun HorizontalTradingUI(
 @Preview
 @Composable
 fun HorizontalTradingUIPreview() {
-//    HorizontalTradingUI(listOf(), listOf(), ViewStates.Loading,)
+    HorizontalTradingUI(
+        modifier = Modifier,
+        ask = listOf(),
+        listOf(),
+        ViewStates.Loading,
+        ViewStates.Loading
+    )
 }

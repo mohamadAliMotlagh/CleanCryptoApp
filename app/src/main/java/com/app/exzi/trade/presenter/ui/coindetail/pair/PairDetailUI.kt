@@ -85,7 +85,7 @@ fun PairDetailUI(modifier: Modifier = Modifier, model: ViewStates<MarketDomainMo
 
                 KeyValueComponent(
                     key = "24h Amount(${market.mainName})",
-                    value = market.high24h,
+                    value = market.volume24hBTC,
                     modifier = Modifier.constrainAs(amount24) {
                         end.linkTo(volume24.start, 16.dp)
                         top.linkTo(high24.bottom, 8.dp)
@@ -93,7 +93,7 @@ fun PairDetailUI(modifier: Modifier = Modifier, model: ViewStates<MarketDomainMo
 
                 KeyValueComponent(
                     key = "24h Volume(${market.secondName})",
-                    value = market.high24h,
+                    value = market.volume24hUSDT,
                     modifier = Modifier.constrainAs(volume24) {
                         end.linkTo(parent.end)
                         top.linkTo(high24.bottom, 8.dp)

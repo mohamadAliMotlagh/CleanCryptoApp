@@ -51,11 +51,11 @@ fun VerticalTradingUI(
 @Preview
 @Composable
 fun VerticalTradingUIPreview() {
-//    VerticalTradingUI(
-//        modifier = Modifier,
-//        listOf(),
-//        listOf(),
-//        ViewStates.Loading,
-//        ViewStates.Loading
-//    )
+    VerticalTradingUI(
+        modifier = Modifier,
+        listOf(),
+        listOf(),
+        ViewStates.Loading,
+        ViewStates.Loading
+    )
 }

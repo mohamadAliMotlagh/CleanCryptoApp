@@ -36,7 +36,7 @@ import com.app.exzi.core.viewstate.ViewStates
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TradingScreen() {
+fun CoinDetailScreen() {
 
     val viewModel: CoinDetailViewModel = hiltViewModel()
     val ask by viewModel.askOrderBook.collectAsState()

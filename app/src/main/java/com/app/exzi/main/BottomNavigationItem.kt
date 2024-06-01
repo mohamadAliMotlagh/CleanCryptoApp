@@ -28,17 +28,17 @@ data class BottomNavigationItem(
                 route = Screens.Markets.route()
             ),
             BottomNavigationItem(
-                label = "Profile",
+                label = "Trade",
                 icon = Icons.Filled.AccountCircle,
                 route = Screens.Trade.route()
             ),
             BottomNavigationItem(
-                label = "Profile",
+                label = "Copy",
                 icon = Icons.Filled.AccountCircle,
                 route = Screens.Copy.route()
             ),
             BottomNavigationItem(
-                label = "Profile",
+                label = "Assets",
                 icon = Icons.Filled.AccountCircle,
                 route = Screens.Assets.route()
             ),
